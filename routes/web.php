@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('layouts.ecom');
+// });
+
+Route::get('/', 'IndexController@index')->name('home');
+Route::get('/add-item', 'IndexController@addItem')->name('add-item');
 
 Auth::routes();
 
