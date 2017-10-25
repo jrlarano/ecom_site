@@ -11,7 +11,12 @@ class IndexController extends Controller
 {
     public function index()
     {
-        return view('index');
+        // return view('index');
+        $products = \App\Product::all();
+        return view('index')->with('products',$products);
+        // foreach($products as $product) {
+        // 	echo $product->name;
+        // }
     }
 
     public function addItem()
