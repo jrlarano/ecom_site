@@ -15,7 +15,10 @@ class IndexController extends Controller
         $products = \App\Product::all();
         return view('index')->with('products',$products);
         // foreach($products as $product) {
-        // 	echo $product->name;
+        // 	// $slug = new Slug();
+        // 	$test = str_slug($product->name);
+        // 	echo $test.'<br/>';
+        // 	// echo $product->name;
         // }
     }
 
@@ -26,4 +29,13 @@ class IndexController extends Controller
         // echo $users->name;
         return view('home')->with($users);
     }
+
+    public function displayProduct($slug)
+	{
+		$slug = explode("-", $slug);
+		$id = array_pop($slug);
+		$name = implode(" ", $slug);
+	    $product = \App\Product::where(['id'=>$id,'name'=>$name])->first();
+	    return view('pdp')->with('product',$product);
+	}
 }

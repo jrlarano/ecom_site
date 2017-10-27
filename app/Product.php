@@ -12,4 +12,9 @@ class Product extends Model
      * @var string
      */
     protected $table = 'products';
+
+    public function getSlug($slug) {
+    	
+    }
+
 }

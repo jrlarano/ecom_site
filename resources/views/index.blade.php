@@ -13,16 +13,27 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    @foreach ($products as $product)
-                        <div class="col-md-3">
-                            <p><h3>{{ $product->name }}</h3></p>
-                            <p><img src="{{ asset('img/products/'.$product->image) }}" class="img-responsive"/></p>
-                            <p>{{ $product->description }}</p>
-                            <p>Price: {{ $product->price }}</p>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <?php $prodNum = 1; ?>
+                            @foreach ($products as $product)
+                            <a href="product/{{str_slug($product->name.' '.$product->id, '-')}}">
+                                <div class="col-md-3">
+                                        <p><h3>{{ $product->name }}</h3></p>
+                                        <p><img src="{{ asset('storage/img/products/'.$product->id.'.jpg') }}" class="img-responsive"/></p>
+                                        <p>{{ $product->description }}</p>
+                                        <p>Price: {{ $product->price }}</p>
+                                </div>                            
+                            </a>
+                            <?php 
+                                if($prodNum%4 == 0) {
+                                    echo '<div class="clearfix"></div>';
+                                }
+                                $prodNum++; 
+                            ?>
+                            @endforeach
                         </div>
-                    @endforeach
-
+                    </div>
 
                 </div>
             </div>

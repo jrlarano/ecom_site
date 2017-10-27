@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->double('price');
             $table->string('description');
+            $table->longText('long_description');
             $table->string('image');
             $table->string('categoryId');
             $table->integer('stock');
